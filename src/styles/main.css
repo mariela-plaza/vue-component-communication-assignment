@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.box {
+  border-radius: 15px;
+  width: fit-content;
+  padding: 0.5rem 3rem;
+  margin: 1.5rem auto;
+}
