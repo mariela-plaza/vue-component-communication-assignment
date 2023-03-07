@@ -7,11 +7,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      username: "Mariela",
-      age: "30"
-    }
+  props: {
+    username: String,
+    age: String
   }
 }
 </script>

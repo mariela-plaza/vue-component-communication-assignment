@@ -1,13 +1,14 @@
 <template>
-  <form class="box user-form">
+  <form class="box user-form" @submit.prevent="submitNewActiveUser">
     <section>
       <label>Username</label>
-      <input type="text" name="newUsername" />
+      <input type="text" name="username" @change="updateUser" :value="user.username" />
     </section>
     <section>
       <label>Age</label>
-      <input type="text" name="newAge" />
+      <input type="text" name="age" @change="updateUser" :value="user.age" />
     </section>
+    <button class="btn btn-light">Submit</button>
   </form>
 </template>
 
@@ -15,8 +16,27 @@
 export default {
   data() {
     return {
-      newUsername: "",
-      newAge: ""
+      user: {
+        username: "",
+        age: ""
+      }
+    }
+  },
+  emits: ['update-active-user'],
+  methods: {
+    updateUser(e) {
+      const { value, name } = e.target
+      this.user = { ...this.user, [name]: value }
+    },
+    resetForm() {
+      this.user = {
+        username: "",
+        age: ""
+      }
+    },
+    submitNewActiveUser() {
+      this.$emit('update-active-user', this.user)
+      this.resetForm()
     }
   }
 }
